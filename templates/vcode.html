@@ -1,0 +1,100 @@
+{% extends 'index.html' %} {% block title %} {% endblock %} {% block body %}
+
+
+
+
+
+<style>
+    /* Add some basic CSS styles for the form */
+    
+    body {
+        font-family: Arial, sans-serif;
+    }
+    
+    .login-page {
+        margin-top: 180px;
+    }
+    
+    .container {
+        max-width: 400px;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+    
+    h2 {
+        text-align: center;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    label {
+        display: block;
+        font-weight: bold;
+    }
+    
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    .btn {
+        background-color: #BC8859!important;
+        color: #fff;
+    }
+    
+    .btn:hover {
+        color: #BC8859!important;
+        background-color: #FEFEFE!important;
+        border-color: #BC8859!important;
+    }
+    
+    .custom-tabs {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .custom-tabs .nav-link {
+        text-align: center;
+        width: 100px;
+        color: #333;
+        font-weight: bold
+    }
+</style>
+<div class="login-page container">
+    <div class="custom-tabs">
+        <ul class="nav nav-tabs" id="myTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="sign-in-tab" data-bs-toggle="tab" href="#sign-in-content" role="tab" aria-controls="sign-in-content" aria-selected="true">verify</a>
+            </li>
+
+        </ul>
+    </div>
+    <div class="tab-content" id="myTabsContent">
+        <div class="tab-pane fade show active" id="sign-in-content" role="tabpanel" aria-labelledby="sign-in-tab">
+            <div class="container">
+                <form action="/vcode" method="POST">
+                    <div class="form-group">
+                        <h6 style="text-align: center;"> An email containing a verification code has been sent to your email<br> ( {{Email}} ) <br>  Please enter the code </h6>
+                        <label for="username">verify Code : </label>
+                        <input type="text" id="username" name="Vcode" required autocomplete="felse">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-outline-light">verify</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

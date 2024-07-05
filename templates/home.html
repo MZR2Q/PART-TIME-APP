@@ -1,0 +1,27 @@
+{% extends 'index.html' %} {% block title %}
+<title>Home</title>
+{% endblock %} {% block body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center" style="background-color: #BC8859; color: white;">
+                    <strong>Achievements</strong>
+                </div>
+                <div class="card-body">
+                    <table class="table" style="direction: rtl;">
+                        <tbody>
+                            {% for s in allatt %}
+                            <tr style="display: flex; flex-direction: column;margin-bottom: 7%;">
+                                <td>الاسم : {{s[8]}} || التاريخ : {{s[2]}} || اليوم : {{s[1]}}</td>
+                                <td>الانجاز : {{s[9]}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

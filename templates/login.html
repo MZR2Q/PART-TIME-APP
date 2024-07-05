@@ -1,0 +1,143 @@
+{% extends 'index.html' %} {% block title %}
+<title>Login</title>{% endblock %} {% block body %}
+<style>
+    /* Add some basic CSS styles for the form */
+
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .login-page {
+        margin-top: 180px;
+    }
+
+    .container {
+        max-width: 400px;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .btn {
+        background-color: #BC8859!important;
+        color: #fff;
+    }
+
+    .btn:hover {
+        color: #BC8859!important;
+        background-color: #FEFEFE!important;
+        border-color: #BC8859!important;
+    }
+
+    .custom-tabs {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .custom-tabs .nav-link {
+        text-align: center;
+        width: 100px;
+        color: #333;
+        font-weight: bold
+    }
+</style>
+<div class="login-page container">
+    <div class="custom-tabs">
+        <ul class="nav nav-tabs" id="myTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a style="width: 110px;" class="nav-link active" id="sign-in-tab" data-bs-toggle="tab" href="#sign-in-content" role="tab" aria-controls="sign-in-content" aria-selected="true"> الدخول</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a style="width: 110px;" class="nav-link" id="sign-up-tab" data-bs-toggle="tab" href="#sign-up-content" role="tab" aria-controls="sign-up-content" aria-selected="false">تسجيل</a>
+            </li>
+        </ul>
+    </div>
+    <div class="tab-content" id="myTabsContent">
+        <div class="tab-pane fade show active" id="sign-in-content" role="tabpanel" aria-labelledby="sign-in-tab">
+            <div class="container">
+                <form action="/" method="POST">
+                    <h6 style="color: brown;text-align: center; margin-bottom:4%;">{{errormassge}}</h6>
+                    <h6 style="margin-bottom: 7%;" style="text-align: center; margin-bottom:4%;">تسجيل الدخول في منصة العمل الجزئي جامعة حفر</h6>
+
+                    <div style="margin-bottom: 7%;" class="input-group mb-3">
+
+
+                        <input type="text" class="form-control" placeholder="s0000000000@uhb.edu.sa" aria-label="Recipient's username" name="user" aria-describedby="basic-addon2" />
+                        <span class="input-group-text" id="basic-addon2">الايميل</span>
+                    </div>
+
+                    <div style="margin-bottom: 7%;" class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="MohamAAD@#@#" name="passs" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                        <span class="input-group-text" id="basic-addon2">كلمة المرور</span>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" style="width: 80%;" class="btn btn-outline-light">دخول</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="sign-up-content" role="tabpanel" aria-labelledby="sign-up-tab">
+            <div class="container">
+                <form action="/re" method="POST">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="محمد خالد محمد الحربي" name="Name" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                        <span class="input-group-text" id="basic-addon2">الاسم</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="s0000000000@uhb.edu.sa" aria-label="Recipient's username" name="Email" aria-describedby="basic-addon2" />
+                        <span class="input-group-text" id="basic-addon2">الايميل</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="MohamAAD@#@#" name="Password" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                        <span class="input-group-text" id="basic-addon2">كلمة المرور</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="0599999998" name="Phone" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                        <span class="input-group-text" id="basic-addon2">الهاتف</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="الحاسب الألي" name="college" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                        <span class="input-group-text" id="basic-addon2">الكلية</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="الرياض" name="Bank_Name" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                        <span class="input-group-text" id="basic-addon2">أسم البنك</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="IPAN" placeholder="SA215487878755555555555555" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                        <span class="input-group-text" id="basic-addon2">الأيبان</span>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" style="width: 80%;" class="btn btn-outline-light">تسجيل</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

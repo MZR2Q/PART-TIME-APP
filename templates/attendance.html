@@ -1,0 +1,135 @@
+{% extends 'index.html' %} {% block title %} {% endblock %} {% block body %}
+<div class="container mt-5">
+    <h1>Attendance</h1>
+    <form method="POST" accept="/atte">
+        <div class="row">
+            <div class="col-md-6">
+                <div style="margin-bottom: 3%;" class="form-outline">
+                    <input name="day" type="text" id="typeText" class="form-control" required />
+                    <label class="form-label" for="typeText">day</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div style="margin-bottom: 3%;" class="form-outline">
+                    <input name="date" type="text" id="typeText" class="form-control" required />
+                    <label class="form-label" for="typeText">date</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div style="margin-bottom: 3%;" class="form-outline">
+                    <input name="start_time" type="text" id="typeText" class="form-control" required />
+                    <label class="form-label" for="typeText">Start time</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div style="margin-bottom: 3%;" class="form-outline">
+                    <input name="end_time" type="text" id="typeText" class="form-control" required />
+                    <label class="form-label" for="typeText">End time</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div style="margin-bottom: 3%;" class="form-outline">
+                    <input name="hours" type="text" id="typeText" class="form-control" required />
+                    <label class="form-label" for="typeText">Hours</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div style="margin-bottom: 3%;" class="form-outline">
+                    <input name="work_type" type="text" id="typeText" class="form-control" required />
+                    <label class="form-label" for="typeText">Work type</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div style="margin-bottom: 3%;" class="form-outline">
+                    <textarea name="Datai" type="text" id="typeText" class="form-control" required></textarea>
+                    <label class="form-label" for="typeText">details</label>
+                </div>
+            </div>
+            <button type="submit" style="background-color: #BC8859;" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+    <table class="table mt-3">
+        <thead style="font-size: large;">
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Details</th>
+            </tr>
+        </thead>
+        <tbody id="ideaTableBody">
+            {% for s in User_Atten %}
+            <tr>
+                <th scope="row" style="font-size: large;word-break: break-word;">{{ s[2] }}</th>
+
+
+                <td>
+
+                    <button class="btn btn-outline-light" style="background-color: #BC8859;" data-bs-toggle="modal" data-bs-target="#{{ s[0] }}">Details</button>
+
+
+                </td>
+
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    {% for s in User_Atten %}
+    <div class="modal fade" id="{{ s[0] }}" tabindex="-1" aria-labelledby="detailsVeiwModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Details</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="detailsVeiwForm">
+                        <div class="mb-3">
+                            <label for="orderName" class="form-label">Date</label>
+                            <input type="text" value="{{s[2]}}" disabled class="form-control" id="orderName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="orderDescription" class="form-label">Day</label>
+                            <input class="form-control" disabled value="{{s[1]}}" id="orderDescription" rows="3" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="fileUpload" class="form-label">Start time</label>
+                            <input type="text" value="{{ s[3] }}" disabled class="form-control" id="orderName">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="orderName" class="form-label">End time</label>
+                            <input type="text" value="{{ s[4] }}" disabled class="form-control" id="orderName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="orderName" class="form-label">Hours</label>
+                            <input type="text" value="{{ s[5] }}" disabled class="form-control" id="orderName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="orderName" class="form-label">Work type</label>
+                            <input type="text" value="{{ s[6] }}" disabled class="form-control" id="orderName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="orderDescription" class="form-label">Day</label>
+                            <textarea class="form-control" disabled id="orderDescription" rows="3">{{s[8]}}</textarea>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+
+    </form>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,146 @@
+{% extends 'index.html' %} {% block title %}
+<title>My Orders</title> {% endblock %} {% block body %}
+
+<style>
+    .container {
+        margin-top: 20px;
+    }
+    
+    .form-control,
+    .btn {
+        background-color: #BC8859 !important;
+        color: #fff;
+    }
+    
+    .form-control,
+    .btn:hover {
+        color: #BC8859 !important;
+        background-color: #FEFEFE !important;
+        border-color: #BC8859 !important;
+        box-shadow: #bc8859 !important;
+        ;
+    }
+    
+    .modal.fade .modal-dialog {
+        transform: scale(0.7);
+        transition: transform 0.3s ease;
+    }
+    
+    .modal.show .modal-dialog {
+        transform: scale(1);
+        transition: transform 0.3s ease;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>My Orders</h1>
+            </div>
+            <div class="col-md-6 d-flex justify-content-end align-items-center">
+                <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#addOrderModal">Add New Order</button>
+            </div>
+        </div>
+        <table class="table mt-3">
+            <thead style="font-size: large;">
+                <tr>
+                    <th scope="col">Name of Order</th>
+                    <th scope="col">Details</th>
+                </tr>
+            </thead>
+            <tbody id="ideaTableBody">
+                {% for s in allord %}
+                <tr>
+                    <th scope="row" style="font-size: large;word-break: break-word;">{{ s[8] }}</th>
+
+
+                    <td>
+
+                        <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#{{ s[0] }}">Details</button>
+
+
+                    </td>
+
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Modal for adding a new order -->
+    <div class="modal fade" id="addOrderModal" tabindex="-1" aria-labelledby="addOrderModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>New Order</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="addOrderForm" action="/myord" method="POST">
+                        <div class="mb-3">
+                            <label for="orderName" class="form-label">Title</label>
+                            <input type="text" name="Title" class="form-control" id="orderName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="orderName" class="form-label">Description</label>
+                            <textarea type="text" class="form-control" name="description" id="orderName" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fileUpload" class="form-label">Url of Your Fils</label>
+                            <input type="text" class="form-control" name="Url" id="orderName">
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-outline-light" id="saveOrderBtn">Save</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% for s in allord %}
+
+
+    <div class="modal fade" id="{{ s[0] }}" tabindex="-1" aria-labelledby="detailsVeiwModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Details Order</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="detailsVeiwForm">
+                        <div class="mb-3">
+                            <label for="orderName" class="form-label">Title</label>
+                            <input type="text" value="{{s[8]}}" disabled class="form-control" id="orderName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="orderDescription" class="form-label">Description of Order</label>
+                            <textarea class="form-control" disabled id="orderDescription" rows="3" required>{{s[4]}}</textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="fileUpload" class="form-label">Uploaded URL</label>
+                            <a type="text" class="form-control" href="{{s[5]}}" disabled id="orderName" required>{{s[5]}}</a>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="orderName" class="form-label">Date</label>
+                            <input type="text" value="{{ s[6] }}" disabled class="form-control" id="orderName" required>
+                        </div>
+                        {% if s[7] == "True" %}
+                        <button style="background-color: green !important;" class="btn " data-bs-target="#{{ s[0] }}">Accepted</button> {% elif s[7] == "False" %}
+                        <button style="background-color: rgba(195, 180, 16, 0.635) !important;" class="btn " data-bs-target="#{{ s[0] }}">whiting</button> {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <script>
+        // when user open the modal for veiwing details of order, get the details of the order and fill the form
+    </script>
+</body>
+
+{% endblock %}
